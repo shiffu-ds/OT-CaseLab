@@ -1,0 +1,23 @@
+name: otcaselab-local
+services:
+  postgres:
+    image: postgres:17.11-alpine3.24
+    environment:
+      POSTGRES_USER: otcaselab
+      POSTGRES_DB: otcaselab
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set a local POSTGRES_PASSWORD in the environment}
+    ports: ["127.0.0.1:5432:5432"]
+    volumes: ["postgres_local:/var/lib/postgresql/data"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U otcaselab -d otcaselab"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+  redis:
+    image: redis:7.4.11-alpine3.21
+    command: ["redis-server", "--appendonly", "yes"]
+    ports: ["127.0.0.1:6379:6379"]
+    volumes: ["redis_local:/data"]
+volumes:
+  postgres_local:
+  redis_local:

@@ -1,0 +1,72 @@
+{
+  "executed_at": "2026-10-01T17:33:57.873218+00:00",
+  "status": "pretrained_inference_smoke_only",
+  "educational_validation": false,
+  "nlp": {
+    "en": {
+      "entities": [
+        {
+          "label": "support",
+          "text": "My family can help me",
+          "start": 24,
+          "end": 45,
+          "negated": false,
+          "uncertain": false,
+          "similarity": 0.6057
+        }
+      ],
+      "mode": "pretrained_multilingual_encoder",
+      "inference_executed": true,
+      "provenance": {
+        "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+        "revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+        "license": "Apache-2.0",
+        "task": "nearest-prototype sentence classification, not trained OT extraction",
+        "elapsed_ms": 145608.48,
+        "max_rss_kib": 870072,
+        "threshold": 0.32
+      },
+      "limitations": "Similarity is not a calibrated probability. Prototype taxonomy and threshold are unvalidated; Urdu/Roman Urdu quality requires educator-labelled evaluation. Source clause offsets are preserved."
+    },
+    "ur": {
+      "entities": [
+        {
+          "label": "support",
+          "text": "خاندان مدد کر سکتا ہے",
+          "start": 30,
+          "end": 51,
+          "negated": false,
+          "uncertain": false,
+          "similarity": 0.8065
+        }
+      ],
+      "mode": "pretrained_multilingual_encoder",
+      "inference_executed": true,
+      "provenance": {
+        "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+        "revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+        "license": "Apache-2.0",
+        "task": "nearest-prototype sentence classification, not trained OT extraction",
+        "elapsed_ms": 2836.24,
+        "max_rss_kib": 1298168,
+        "threshold": 0.32
+      },
+      "limitations": "Similarity is not a calibrated probability. Prototype taxonomy and threshold are unvalidated; Urdu/Roman Urdu quality requires educator-labelled evaluation. Source clause offsets are preserved."
+    },
+    "roman": {
+      "entities": [],
+      "mode": "pretrained_multilingual_encoder",
+      "inference_executed": true,
+      "provenance": {
+        "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+        "revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+        "license": "Apache-2.0",
+        "task": "nearest-prototype sentence classification, not trained OT extraction",
+        "elapsed_ms": 2509.35,
+        "max_rss_kib": 1329520,
+        "threshold": 0.32
+      },
+      "limitations": "Similarity is not a calibrated probability. Prototype taxonomy and threshold are unvalidated; Urdu/Roman Urdu quality requires educator-labelled evaluation. Source clause offsets are preserved."
+    }
+  }
+}

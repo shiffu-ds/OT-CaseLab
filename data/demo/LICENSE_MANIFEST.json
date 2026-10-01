@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "created_date": "2026-10-01",
+  "content_origin": "Original fictional drafts authored for OTCaseLab; no real patients or learner records.",
+  "license": "CC0-1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "review_status": "pending_review",
+  "assets": [
+    {"id": "room-home", "path": "assets/room-home.svg", "origin": "original schematic", "license": "CC0-1.0", "photographic": false, "intended_use": "educational interface demonstration; not a natural-image CV benchmark"},
+    {"id": "room-work", "path": "assets/room-work.svg", "origin": "original schematic", "license": "CC0-1.0", "photographic": false, "intended_use": "educational interface demonstration; not a natural-image CV benchmark"}
+  ],
+  "clinical_validation": false,
+  "expert_labels": false,
+  "real_person_data": false,
+  "approved_reference_passages": 0,
+  "publication_note": "Demo eligibility does not constitute educator approval or production publication."
+}

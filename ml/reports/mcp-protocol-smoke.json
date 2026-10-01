@@ -1,0 +1,230 @@
+{
+  "executed_at": "2026-10-01T17:45:09.582060+00:00",
+  "status": "actual_official_mcp_stdio_smoke",
+  "data": "disposable fictional fixture",
+  "checks": {
+    "initialized": true,
+    "discovered_tools": 9,
+    "actual_tool_calls": 7,
+    "all_calls_completed": true,
+    "migrations_applied": true,
+    "cross_owner_rejected": true,
+    "idempotent_write_retry": true,
+    "persisted_feedback_count": 1
+  },
+  "report": {
+    "mode": "lexical_formative_baseline",
+    "version": "original-lexical-0.1",
+    "review_status": "provisional",
+    "items": [
+      {
+        "dimension": "interviewing",
+        "label": "Occupational interviewing",
+        "score": 1,
+        "max_score": 3,
+        "student_evidence": [
+          {
+            "field": "messages",
+            "start": 0,
+            "end": 56,
+            "text": "What is important in your routine? Who provides support?",
+            "uncertain": false,
+            "message_id": "6d42c68e-0a8a-4a56-9403-f3b49122a1e3"
+          }
+        ],
+        "rubric_anchor": "0: no relevant learner evidence; 1: identifies an activity; 2: elicits a stated priority and context; 3: checks priorities, support/preferences and missing information without assuming them.",
+        "case_fact": {
+          "id": "stroke-home-priority",
+          "text": "I want to choose my own clothes and put on a comfortable shirt before breakfast. That matters more to me than doing every household task alone."
+        },
+        "visual_observation": null,
+        "reference_passage": null,
+        "explanation": "Your quoted text contains a relevant mention for this criterion. The coverage score is provisional; it does not judge whether the goal is appropriate, feasible, or justified. Compare it with the rubric anchor and discuss it with an educator.",
+        "uncertainty": "Lexical mention coverage does not establish reasoning quality; educator review is required. Interview coverage uses only learner-authored transcript messages, never patient or generated text. No selected educator-approved reference supports this item.",
+        "review_status": "provisional"
+      },
+      {
+        "dimension": "goals",
+        "label": "Patient-prioritized functional goals",
+        "score": 2,
+        "max_score": 3,
+        "student_evidence": [
+          {
+            "field": "goals",
+            "start": 0,
+            "end": 48,
+            "text": "Goal: choose clothes and dress before breakfast.",
+            "uncertain": false
+          },
+          {
+            "field": "goals",
+            "start": 49,
+            "end": 71,
+            "text": "Review agreed minutes.",
+            "uncertain": false
+          }
+        ],
+        "rubric_anchor": "0: no functional goal; 1: names an activity; 2: links a goal to the patient's stated priority; 3: states an observable agreed activity, context and review criterion while marking missing feasibility information.",
+        "case_fact": {
+          "id": "stroke-home-priority",
+          "text": "I want to choose my own clothes and put on a comfortable shirt before breakfast. That matters more to me than doing every household task alone."
+        },
+        "visual_observation": null,
+        "reference_passage": null,
+        "explanation": "Your quoted text contains a relevant mention for this criterion. The coverage score is provisional; it does not judge whether the goal is appropriate, feasible, or justified. Compare it with the rubric anchor and discuss it with an educator.",
+        "uncertainty": "Lexical mention coverage does not establish reasoning quality; educator review is required. No selected educator-approved reference supports this item.",
+        "review_status": "provisional"
+      },
+      {
+        "dimension": "environment",
+        "label": "Environmental reasoning",
+        "score": 2,
+        "max_score": 3,
+        "student_evidence": [
+          {
+            "field": "observations",
+            "start": 0,
+            "end": 27,
+            "text": "I observe a chair and door.",
+            "uncertain": false
+          },
+          {
+            "field": "observations",
+            "start": 28,
+            "end": 73,
+            "text": "Measure the space before interpreting access.",
+            "uncertain": false
+          }
+        ],
+        "rubric_anchor": "0: no image observation; 1: describes a visible object; 2: connects an observation to a relevant task; 3: distinguishes observation, interpretation and missing measurements and asks for contextual confirmation.",
+        "case_fact": {
+          "id": "stroke-home-priority",
+          "text": "I want to choose my own clothes and put on a comfortable shirt before breakfast. That matters more to me than doing every household task alone."
+        },
+        "visual_observation": null,
+        "reference_passage": null,
+        "explanation": "Your quoted text contains a relevant mention for this criterion. The coverage score is provisional; it does not judge whether the goal is appropriate, feasible, or justified. Compare it with the rubric anchor and discuss it with an educator.",
+        "uncertainty": "Lexical mention coverage does not establish reasoning quality; educator review is required. No selected educator-approved reference supports this item. Asset annotations are pending educator review; no confirmed visual observation was used.",
+        "review_status": "provisional"
+      },
+      {
+        "dimension": "rationale",
+        "label": "Reasoned educational plan",
+        "score": 1,
+        "max_score": 3,
+        "student_evidence": [
+          {
+            "field": "rationale",
+            "start": 0,
+            "end": 72,
+            "text": "Because the priority matters, ask about uncertainty and educator review.",
+            "uncertain": false
+          }
+        ],
+        "rubric_anchor": "0: no learner rationale; 1: gives a generic explanation; 2: connects the patient's priority to a proposed approach; 3: links priority and contextual evidence, records uncertainty, and proposes educator review rather than inventing clinical clearance.",
+        "case_fact": {
+          "id": "stroke-home-priority",
+          "text": "I want to choose my own clothes and put on a comfortable shirt before breakfast. That matters more to me than doing every household task alone."
+        },
+        "visual_observation": null,
+        "reference_passage": null,
+        "explanation": "Your quoted text contains a relevant mention for this criterion. The coverage score is provisional; it does not judge whether the goal is appropriate, feasible, or justified. Compare it with the rubric anchor and discuss it with an educator.",
+        "uncertainty": "Lexical mention coverage does not establish reasoning quality; educator review is required. No selected educator-approved reference supports this item.",
+        "review_status": "provisional"
+      }
+    ],
+    "total": 6,
+    "max_total": 12,
+    "trace": [
+      {
+        "step": 1,
+        "tool": "get_case_context",
+        "status": "completed",
+        "elapsed_ms": 729.31
+      },
+      {
+        "step": 2,
+        "tool": "extract_profile",
+        "status": "completed",
+        "elapsed_ms": 20.6
+      },
+      {
+        "step": 3,
+        "tool": "search_approved_evidence",
+        "status": "completed",
+        "elapsed_ms": 6.18
+      },
+      {
+        "step": 4,
+        "tool": "get_evaluation_rubric",
+        "status": "completed",
+        "elapsed_ms": 8.34
+      },
+      {
+        "step": 5,
+        "tool": "assess_rubric",
+        "status": "completed",
+        "elapsed_ms": 16.16
+      },
+      {
+        "step": 6,
+        "tool": "recommend_next_case",
+        "status": "completed",
+        "elapsed_ms": 12.55
+      },
+      {
+        "step": 7,
+        "tool": "save_feedback",
+        "status": "completed"
+      }
+    ],
+    "recommendation": {
+      "case_id": "stroke-community",
+      "title": "Bilal: planning a journey with his child",
+      "domain": "interviewing",
+      "reason": "Revisit occupational interviewing, the lowest provisional coverage dimension. An educator may choose a different focus; keyword coverage is not a diagnosis of skill.",
+      "mode": "transparent_rule",
+      "input_cutoff": "2026-10-01T17:45:03.455462Z"
+    },
+    "limitations": "Original unvalidated formative rubric coverage; synthetic examples do not validate learner grading.",
+    "agent": {
+      "mode": "bounded_rule_workflow",
+      "trace_id": "e3906898-9610-48a5-a2ce-0a0b1f4e4cc2",
+      "action_budget": 8,
+      "deadline_seconds": 60.0,
+      "elapsed_ms_before_save": 2224.72,
+      "limitations": "Rule mode is a bounded selective workflow. Model-directed planning is separately configured and not claimed in rule mode."
+    },
+    "mcp": {
+      "sdk": "mcp==2.2.0",
+      "transport": "stdio",
+      "initialized": true,
+      "discovered_tools": [
+        "get_case_context",
+        "search_approved_evidence",
+        "extract_profile",
+        "analyze_case_asset",
+        "get_learner_history",
+        "get_evaluation_rubric",
+        "assess_rubric",
+        "save_feedback",
+        "recommend_next_case"
+      ],
+      "protocol_version": "2025-11-25",
+      "server": {
+        "name": "OTCaseLab internal educational tools",
+        "title": null,
+        "version": "",
+        "description": null,
+        "website_url": null,
+        "icons": null
+      }
+    },
+    "evidence_retrieval": {
+      "mode": "lexical_baseline",
+      "status": "no_approved_relevant_evidence",
+      "passage_ids": []
+    },
+    "feedback_id": "98b3b9b3-0a54-4d9f-ba44-ed2699fcf20d"
+  }
+}

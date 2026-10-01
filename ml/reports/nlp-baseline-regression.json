@@ -1,0 +1,32 @@
+{
+  "status": "authored_regression_fixtures_only",
+  "educator_reviewed": false,
+  "examples": 7,
+  "languages": {
+    "en": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "tp": 7,
+      "fp": 0,
+      "fn": 0
+    },
+    "ur": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "tp": 6,
+      "fp": 0,
+      "fn": 0
+    },
+    "roman": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "tp": 5,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "limitations": "A tiny implementation-regression set is not a multilingual fairness benchmark or educational accuracy estimate."
+}

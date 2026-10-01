@@ -1,0 +1,48 @@
+{
+  "executed_at": "2026-10-01T17:31:39.943906+00:00",
+  "status": "pretrained_inference_smoke_only",
+  "educational_validation": false,
+  "cv": {
+    "mode": "pretrained_ssdlite",
+    "predictions": [
+      {
+        "label": "chair",
+        "confidence": 0.89249,
+        "box": [
+          161.75,
+          252.84,
+          383.52,
+          518.33
+        ]
+      },
+      {
+        "label": "chair",
+        "confidence": 0.66055,
+        "box": [
+          423.46,
+          340.16,
+          653.23,
+          523.33
+        ]
+      }
+    ],
+    "width": 1000,
+    "height": 650,
+    "coordinate_system": "pixel_xyxy",
+    "review_status": "provisional",
+    "provenance": {
+      "inference_executed": true,
+      "model": "torchvision/ssdlite320_mobilenet_v3_large",
+      "revision": "COCO_V1",
+      "weights_url": "https://download.pytorch.org/models/ssdlite320_mobilenet_v3_large_coco-a79551df.pth",
+      "weights_sha256": "a79551df90c79834bcd3bb3845ef9d966b5449a3a9b2833ae8404778ca5d65d2",
+      "torch": "2.8.0+cpu",
+      "input_sha256": "d9caebdef6dd75ccb558b5e5b9de10dfc17da43ee3b3f38242eb531eae7dc9fc",
+      "threshold": 0.5,
+      "elapsed_ms": 15311.09,
+      "max_rss_kib": 407180,
+      "limitations": "COCO detector; predictions do not establish barriers, suitability, safety, or diagnosis. Authored schematics differ from the photographic training domain. No local accuracy evaluation is claimed."
+    },
+    "input_license": "CC0-1.0 authored original schematic"
+  }
+}

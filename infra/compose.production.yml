@@ -1,0 +1,107 @@
+name: otcaselab
+x-app: &app
+  image: otcaselab-api:${RELEASE_TAG:-local}
+  build:
+    context: ..
+    dockerfile: infra/api.Dockerfile
+    args:
+      INSTALL_NEURAL: ${INSTALL_NEURAL:-false}
+  env_file: ../.env.production
+  environment:
+    ENVIRONMENT: production
+    DATABASE_URL: postgresql+psycopg://otcase_app:${APP_DB_PASSWORD:?Set APP_DB_PASSWORD}@postgres:5432/otcaselab
+    REDIS_URL: redis://redis:6379/0
+    MCP_TRANSPORT: http
+    MCP_URL: http://mcp:9000/mcp
+    COOKIE_SECURE: "true"
+    JOB_MODE: celery
+    PRIVATE_ASSET_PATH: /app/.runtime/uploads
+    MODEL_CACHE_PATH: /app/.runtime/models
+    OMP_NUM_THREADS: "1"
+  volumes:
+    - private_runtime:/app/.runtime
+  restart: unless-stopped
+  security_opt: ["no-new-privileges:true"]
+  cap_drop: [ALL]
+  depends_on:
+    postgres:
+      condition: service_healthy
+    redis:
+      condition: service_healthy
+services:
+  postgres:
+    image: postgres:17.11-alpine3.24
+    environment:
+      POSTGRES_USER: otcaselab
+      POSTGRES_DB: otcaselab
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD}
+      APP_DB_PASSWORD: ${APP_DB_PASSWORD:?Set APP_DB_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./postgres-init.sh:/docker-entrypoint-initdb.d/10-app-role.sh:ro
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U otcaselab -d otcaselab"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+  redis:
+    image: redis:7.4.11-alpine3.21
+    command: ["redis-server", "--appendonly", "yes", "--save", "60", "1"]
+    volumes: ["redis_data:/data"]
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+  migrate:
+    <<: *app
+    profiles: [release]
+    restart: "no"
+    command: ["alembic", "upgrade", "head"]
+  api:
+    <<: *app
+    command: ["uvicorn", "services.api.main:app", "--host", "0.0.0.0", "--port", "8000", "--proxy-headers", "--forwarded-allow-ips", "*"]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/api/v1/health', timeout=5)"]
+      interval: 15s
+      timeout: 8s
+      retries: 10
+  worker:
+    <<: *app
+    command: ["celery", "-A", "services.worker.tasks:app", "worker", "--loglevel=WARNING", "--concurrency=1"]
+    stop_grace_period: 190s
+  mcp:
+    <<: *app
+    command: ["python", "-m", "services.mcp.server"]
+  web:
+    image: otcaselab-web:${RELEASE_TAG:-local}
+    build:
+      context: ..
+      dockerfile: infra/web.Dockerfile
+    environment:
+      API_INTERNAL_URL: http://api:8000
+    restart: unless-stopped
+    security_opt: ["no-new-privileges:true"]
+    cap_drop: [ALL]
+    depends_on:
+      api:
+        condition: service_healthy
+  proxy:
+    image: caddy:2.11.4-alpine
+    environment:
+      APP_DOMAIN: ${APP_DOMAIN:?Set APP_DOMAIN}
+    ports: ["80:80", "443:443", "443:443/udp"]
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    restart: unless-stopped
+    depends_on: [web]
+volumes:
+  postgres_data:
+  redis_data:
+  private_runtime:
+  caddy_data:
+  caddy_config:

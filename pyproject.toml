@@ -1,0 +1,53 @@
+[project]
+name = "otcaselab"
+version = "0.1.0"
+description = "Fictional occupational therapy reasoning education prototype"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "fastapi",
+  "uvicorn[standard]",
+  "sqlalchemy",
+  "alembic",
+  "argon2-cffi",
+  "pydantic-settings",
+  "httpx",
+  "python-multipart",
+  "psycopg[binary]",
+  "mcp==2.2.0",
+  "celery",
+  "redis",
+  "pillow",
+  "scikit-learn==1.9.1",
+  "joblib",
+  "anthropic==1.11.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "pytest-asyncio", "ruff"]
+neural = [
+    "torch==2.8.0+cpu",
+    "torchvision==0.23.0+cpu",
+    "transformers==4.57.1",
+    "sentence-transformers==5.1.1",
+    "cairosvg==2.9.1",
+]
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "pytorch-cpu" }
+torchvision = { index = "pytorch-cpu" }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I"]
